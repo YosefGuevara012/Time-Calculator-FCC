@@ -1,5 +1,7 @@
 def add_time(start, duration):
 
+  # Spliting the start and duration times
+
   hour_1, minutes_1, period = time_split(start)
   hour_2, minutes_2         = time_split(duration)
 
@@ -10,6 +12,13 @@ def add_time(start, duration):
   hours = int(hour_1) + int(hour_2)
   days = hours // 24
   hours = hours % 24
+
+  # Calculating minutes and additional hours
+
+  minutes = int(minutes_1) +int(minutes_2)
+  add_hours = minutes // 60
+  minutes = minutes % 60
+  
 
 
 
