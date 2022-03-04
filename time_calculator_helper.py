@@ -27,13 +27,16 @@ def add_time(start, duration, day = None):
   # Ajusting the time and the period
 
   if hours == 12:
+    hours = 12
     period = "PM"
   elif hours == 0:
     hours = 12
+    period = "AM"
   elif hours > 12:
     period = "PM"
     hours -= 12
   elif hours < 12:
+    hours = hours
     period = "AM"
 
 
@@ -43,6 +46,7 @@ def add_time(start, duration, day = None):
 
   if day != None:
     day = day.capitalize()
+
     index = (days % 7) + week.index(day)
     
 
@@ -50,7 +54,7 @@ def add_time(start, duration, day = None):
     if days == 0:
       txt = "{0}:{1} {2}, {3}".format(hours,'{:02}'.format(minutes),period,week[index])
     elif days == 1:
-      txt = "{0}:{1} {2}, {3}  (next day)".format(hours,'{:02}'.format(minutes),period, week[index])
+      txt = "{0}:{1} {2}, {3} (next day)".format(hours,'{:02}'.format(minutes),period, week[index])
     elif days > 1:
       txt = "{0}:{1} {2}, {3} ({4} days later)".format(hours,'{:02}'.format(minutes),period, week[index], days)
 
@@ -64,13 +68,6 @@ def add_time(start, duration, day = None):
     elif days > 1:
       txt = "{0}:{1} {2} ({3} days later)".format(hours,'{:02}'.format(minutes),period, days)
     
-  
- 
-  
-  
-    
-    
-  
   return txt
 
 def time_split(string):
@@ -84,6 +81,8 @@ def time_split(string):
   except:
     minutes = minutes
     return [hours, minutes]
+
+
 
 
 print("3:00 PM,3:10")
