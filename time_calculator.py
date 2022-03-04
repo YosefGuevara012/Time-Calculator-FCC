@@ -44,7 +44,8 @@ def add_time(start, duration, day = None):
 
   if day != None:
     day = day.capitalize()
-    index = (days % 7) + week.index(day)
+    index = days + week.index(day)
+    index = index % 7
     
 
     # Ajusting the text result format
@@ -78,7 +79,3 @@ def time_split(string):
   except:
     minutes = minutes
     return [hours, minutes]
-
-
-    
-
