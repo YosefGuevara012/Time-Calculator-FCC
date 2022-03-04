@@ -36,10 +36,18 @@ def add_time(start, duration):
     hours -= 12
   elif hours < 12:
     period = "AM"
+
+  # Ajusting the text result format
   
+  if days == 0:
+    txt = "{0}:{1} {2},".format(hours,'{:02}'.format(minutes),period)
+  elif days == 1:
+    txt = "{0}:{1} {2}, (next day)".format(hours,'{:02}'.format(minutes),period)
+  elif days > 1:
+    txt = "{0}:{1} {2}, ({3} days later)".format(hours,'{:02}'.format(minutes),period, days)
     
-  txt = "{0}:{1}, {2}".format(hours,minutes,period)
- 
+    
+  
   return txt
 
 def time_split(string):
@@ -68,7 +76,7 @@ print(add_time("11:43 AM", "00:20"))
 print("********************************")
 
 print("10:10 PM, 3:30")
-print(add_time("10:10 AM", "3:30"))
+print(add_time("10:10 PM", "3:30"))
 print("********************************")
 
 print("11:43 PM, 24:20")
